@@ -17,4 +17,4 @@ Here are links to some popular extensions.
 
 ## Contact Liquibase
 * Liquibase sales: https://www.liquibase.com/contact
-* Liquibase support: https://support.liquibase.com/knowledge
+* Liquibase support: https://support.liquibase.com/

@@ -86,7 +86,7 @@ Sample flow files are included in this repository.
 
 ## Contact Liquibase
 * Liquibase sales: https://www.liquibase.com/contact
-* Liquibase support: https://support.liquibase.com/knowledge
+* Liquibase support: https://support.liquibase.com/
 
 # Thank you!
 Thank you for evaluating Liquibase Pro! We hope to be a part of your DevOps journey.
