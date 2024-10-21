@@ -17,6 +17,9 @@ Liquibase can be installed locally (e.g., on a workstation or automation tool ag
 
 Liquibase can be downloaded for Windows, Max, and Linux platforms [here](https://www.liquibase.com/download).
 
+To apply your Pro license key, consult the documentation [here](https://docs.liquibase.com/liquibase-pro/license-key.html).
+
+
 ## Core Concepts
 If you are unfamilar with Liquibase concepts, here is some information to get you started.
 
@@ -47,7 +50,9 @@ The exact information required may vary between individual database platforms. C
 |Command |Description|Documentation
 |----------|------------|------------|
 | connect | Test database connection | [Link](https://docs.liquibase.com/commands/change-tracking/connect.html)
+| status | Show undeployed changes | [Link](https://docs.liquibase.com/commands/change-tracking/status.html)
 | update | Run changes against target database | [Link](https://docs.liquibase.com/change-types/update.html)
+| history | Show deployed changes | [Link](https://docs.liquibase.com/commands/change-tracking/history.html)
 | rollback-one-update | Rollback the last or a specified update | [Link](https://docs.liquibase.com/commands/rollback/rollback-one-update.html)
 | checks | Show or view policy checks | [Link](https://docs.liquibase.com/liquibase-pro/policy-checks/workflows/home.html)
 | flow | Execute a Liquibase workflow | [Link](https://docs.liquibase.com/commands/flow/flow.html)
