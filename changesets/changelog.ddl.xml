@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet author="jbennett" id="ddl_create_table_organizations" labels="release-1.0.0">
+        <createTable tableName="ORGANIZATIONS">
+            <column name="ID" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar(200)"/>
+            <column name="INDUSTRY" type="varchar(400)"/> 
+            <column name="EMPLOYEE_COUNT" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="jbennett" id="dml_insert_organizations" labels="release-1.1.0">
+        <sql>
+            INSERT INTO ORGANIZATIONS VALUES (1, 'Acme Corporation', 'Explosives', 1);
+            INSERT INTO ORGANIZATIONS VALUES (2, 'Initech', 'Y2K', 50);
+            INSERT INTO ORGANIZATIONS VALUES (3, 'Umbrella Corporation', 'Zombies', 10000);
+            INSERT INTO ORGANIZATIONS VALUES (4, 'Soylent Corp', 'People', 100);
+            INSERT INTO ORGANIZATIONS VALUES (5, 'Globex Corp', 'Widgets', 5000);
+        </sql>
+        <rollback>
+          <sql>DELETE FROM ORGANIZATIONS WHERE ID BETWEEN 1 AND 5;</sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="jbennett" id="ddl_create_table_addresses" labels="release-1.2.0">
+        <createTable tableName="ADDRESSES">
+            <column name="ID" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>  
+            <column name="ADDRESS_LINE_1" type="varchar(500)"/>
+            <column name="CITY" type="varchar(200)"/> 
+            <column name="STATE" type="varchar(3)"/>
+            <column name="ZIP_CODE" type="varchar(9)"/> 
+            <column name="ORG_ID" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="jbennett" id="dml_create_constraint_addresses" labels="release-1.2.0">
+        <addForeignKeyConstraint
+            baseColumnNames="ORG_ID"
+            baseTableName="ADDRESSES"
+            constraintName="ORG_FK1"
+            referencedColumnNames="ID"
+            referencedTableName="ORGANIZATIONS"/>
+    </changeSet>
+
+    <changeSet author="jbennett" id="ddl_create_table_employees" labels="release-1.3.0">
+        <createTable tableName="EMPLOYEES">
+            <column name="ID" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>  
+            <column name="FIRST_NAME" type="varchar(200)"/>
+            <column name="LAST_NAME" type="varchar(200)"/> 
+            <column name="DATE_OF_BIRTH" type="date"/>
+            <column name="ORG_ID" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="jbennett" id="dml_create_constraint_employees" labels="release-1.3.0">
+        <addForeignKeyConstraint
+            baseColumnNames="ORG_ID"
+            baseTableName="EMPLOYEES"
+            constraintName="ORG_FK2"
+            referencedColumnNames="ID"
+            referencedTableName="ORGANIZATIONS"/>
+    </changeSet>
+
+</databaseChangeLog>

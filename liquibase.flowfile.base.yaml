@@ -1,0 +1,91 @@
+###
+### This flowfile is intended to highlight capabilities of Liquibase Pro
+### Review and update prior to use
+###
+### Liquibase version: 4.27.0+
+###
+### Liquibase sales: https://www.liquibase.com/contact-us
+### Liquibase support: https://support.liquibase.com/knowledge
+###
+
+### 
+### Prior to running the following files must exist in repository
+###
+### 1. liquibase.checks-settings.conf
+###    Liquibase policy checks configuration file
+###    https://docs.liquibase.com/liquibase-pro/policy-checks/home.html
+###
+### 2. changelog.main.xml
+###    Root Liquibase changelog file
+###    https://docs.liquibase.com/concepts/changelogs/home.html
+###
+
+###
+### Global variables used in the flowfile
+###
+globalVariables:
+  ###
+  ### These variables are typically set via automation tools (see pipeline examples)
+  ###
+  ### LIQUIBASE_SEARCH_PATH: REQUIRED
+  ### Use absolute paths when using Liquibase's Docker container
+  ### LIQUIBASE_SEARCH_PATH: "/liquibase/changelog"
+  ###
+  ### LIQUIBASE_COMMAND_CHANGELOG_FILE: REQUIRED
+  ### Root Liquibase changelog file
+  ### LIQUIBASE_COMMAND_CHANGELOG_FILE: "changelog.main.xml"
+  ###
+  ### Secrets: REQUIRED
+  ### These values should be pulled from a secure vault via pipeline or Liquibase Pro extension
+  ### https://docs.liquibase.com/tools-integrations/extensions/secrets-management/home.html
+  ###
+  ### LIQUIBASE_COMMAND_URL: "jdbc:h2:tcp://localhost:9090/mem:dev"
+  ### LIQUIBASE_COMMAND_USERNAME: "dbuser"
+  ### LIQUIBASE_COMMAND_PASSWORD: "letmein"
+  ### LIQUIBASE_LICENSE_KEY: "12345"
+  ###
+  ### Structured logging
+  ### Liquibase logs can be ingested by any standard observability tool (e.g., CloudWatch, Datadog, Elastic, Splunk)
+  ### https://docs.liquibase.com/tools-integrations/observability/structured-logging.html
+  ###
+  ### LIQUIBASE_LOG_FILE: "liquibase.log.json"
+  ### LIQUIBASE_LOG_FORMAT: "json"
+  ### LIQUIBASE_LOG_LEVEL: "warning"
+  ### LIQUIBASE_MIRROR_CONSOLE_MESSAGES_TO_LOG: "false"
+  ###
+  ### Other settings
+  ### LIQUIBASE_COMMAND_CHECKS_RUN_CHECKS_OUTPUT: "issues"
+  ### LIQUIBASE_SHOW_BANNER: "false"
+  ###
+  ### Label filters
+  ### Used to specify which changesets to deploy (defaults to all)
+  ### Set LB_LABELS variable from automation tool
+  ### https://docs.liquibase.com/concepts/changelogs/attributes/labels.html
+  ###
+  LB_LABELS: "${LB_LABELS:-null}"
+
+###
+### Stages to execute
+###
+stages:
+  Default:
+    actions:
+      #
+      # Validate database connection
+      # https://docs.liquibase.com/commands/change-tracking/connect.html
+      #
+      - type: liquibase
+        command: connect
+      #
+      # Validate changelog
+      # https://docs.liquibase.com/commands/utility/validate.html
+      #
+      - type: liquibase
+        command: validate
+      #
+      # View pending changes
+      # https://docs.liquibase.com/commands/change-tracking/status.html
+      #
+      - type: liquibase
+        command: status
+        cmdArgs: { label-filter: "${LB_LABELS}", verbose: "true" }
