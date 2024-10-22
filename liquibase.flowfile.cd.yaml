@@ -92,7 +92,7 @@ globalVariables:
   ### Set these flags to T/F to turn Liquibase Pro features on/off
   ### These flags can also be set dynamically by an automation tool based on user input, environment, team, etc.
   ###
-  LB_SHOW_UPDATE_SQL: "${LB_TEST_CHECKS:-F}"
+  LB_SHOW_UPDATE_SQL: "${LB_SHOW_UPDATE_SQL:-F}"
   LB_TEST_DRIFT: "${LB_TEST_DRIFT:-T}"
   LB_TEST_ROLLBACKS: "${LB_TEST_ROLLBACKS:-F}"
 

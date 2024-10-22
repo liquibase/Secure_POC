@@ -68,7 +68,6 @@ globalVariables:
   ### Files
   ###
   BASE_FLOW_FILE: "liquibase.flowfile.base.yaml"
-  DIFF_FILE: "Diff_${LB_ENVIRONMENT}.json"
   ###
   ### Operational Reports
   ### Liquibase Pro creates operational reports for certain commands
