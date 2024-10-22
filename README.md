@@ -17,7 +17,7 @@ Liquibase can be installed locally (e.g., on a workstation or automation tool ag
 
 Liquibase can be downloaded for Windows, Max, and Linux platforms [here](https://www.liquibase.com/download).
 
-To apply your Pro license key, consult the documentation [here](https://docs.liquibase.com/liquibase-pro/license-key.html).
+To apply your Pro license key, check [here](https://docs.liquibase.com/liquibase-pro/license-key.html).
 
 
 ## Core Concepts
@@ -27,11 +27,28 @@ If you are unfamilar with Liquibase concepts, here is some information to get yo
 * [Changelog](https://docs.liquibase.com/concepts/changelogs/home.html): text file containing collection of changesets
 * [Tracking tables](https://docs.liquibase.com/concepts/tracking-tables/tracking-tables.html): tables created and maintained by Liquibase
 
-Changelog formats can be mixed and matched as desired. Liquibase does not impose any file name requirements. Sample changelogs are included in this repository.
+Changelog formats can be mixed and matched as desired. Liquibase does not impose any file name requirements.
 
-* [SQL](changelog.relational.sql)
-* [XML - Relational](changelog.relational.xml)
-* [XML - Mongo](changelog.mongo.xml)
+## Sample Changelogs
+
+* [Root - Mongo](changelog.mongo.xml)
+    * [JS - Mongo](changesets/changelog.mongo.js)
+* [Root - SQL](changelog.relational.sql)
+    * [SQL - Relational](changesets/changelog.ddl.sql)
+* [Root - XML](changelog.relational.xml)
+    * [XML - Relational](changesets/changelog.ddl.xml)
+
+```
+Tree
+│   changelog.mongo.xml
+│   changelog.relational.sql
+│   changelog.relational.xml
+│
+├───changesets
+│       changelog.ddl.sql
+│       changelog.ddl.xml
+│       changelog.mongo.js
+```
 
 ## Database Connections
 Liquibase supports over [60 databases](https://www.liquibase.com/supported-databases), including data warehouses, relational, and NoSQL.
@@ -75,6 +92,7 @@ During a typical evaluation the following features are exercised.
 
 1. [Policy Checks](https://docs.liquibase.com/liquibase-pro/policy-checks/home.html): similar to static code analysis, but geared more for database changes
 1. [Workflows](https://docs.liquibase.com/commands/flow/flow.html): portable, database independent workflows to ensure consistency
+1. [Targeted Rollback](https://docs.liquibase.com/liquibase-pro/targeted-rollbacks.html): rollback individual changesets
 1. [Operation Reports](https://docs.liquibase.com/liquibase-pro/observability/operation-reports.html): basic HTML reports used for auditing or troubleshooting
 1. [Structured Logging](https://docs.liquibase.com/liquibase-pro/observability/structured-logging.html): JSON formatted logs to feed into an observability tool for reporting (e.g., Datadog, Splunk, Grafana)
 
