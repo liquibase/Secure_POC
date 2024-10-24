@@ -35,14 +35,6 @@ globalVariables:
   ### Root Liquibase changelog file
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: "changelog.main.xml"
   ###
-  ### LB_BASE_DIR: REQUIRED
-  ### The directory to write Liquibase output (e.g., logs, reports)
-  ### LB_BASE_DIR: "/liquibase/changelogs"
-  ###
-  ### LB_ENVIRONMENT: REQUIRED
-  ### LB_ENVIRONMENT should be the environment within the pipeline to operate on (e.g., DEV, UAT, PROD)
-  ### LB_ENVIRONMENT: "DEV"
-  ###
   ### Secrets: REQUIRED
   ### These values should be pulled from a secure vault via pipeline or Liquibase Pro extension
   ### https://docs.liquibase.com/tools-integrations/extensions/secrets-management/home.html
@@ -64,6 +56,14 @@ globalVariables:
   ### Other settings
   ### LIQUIBASE_COMMAND_CHECKS_RUN_CHECKS_OUTPUT: "issues"
   ### LIQUIBASE_SHOW_BANNER: "false"
+  ###
+  ### LB_BASE_DIR: REQUIRED
+  ### The directory to write Liquibase output (e.g., logs, reports)
+  ### LB_BASE_DIR: "/liquibase/changelogs"
+  ###
+  ### LB_ENVIRONMENT: REQUIRED
+  ### The environment within the pipeline to operate on (e.g., DEV, UAT, PROD)
+  ### LB_ENVIRONMENT: "DEV"
   ###
   ### Files
   ###

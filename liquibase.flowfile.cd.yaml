@@ -31,19 +31,6 @@ globalVariables:
   ### Root Liquibase changelog file
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: "changelog.main.xml"
   ###
-  ### LB_BASE_DIR: REQUIRED
-  ### The directory to write Liquibase output (e.g., logs, reports)
-  ### LB_BASE_DIR: "/liquibase/changelogs"
-  ###
-  ### LB_ENVIRONMENT: REQUIRED
-  ### LB_ENVIRONMENT should be the environment within the pipeline to operate on (e.g., DEV, UAT, PROD)
-  ### LB_ENVIRONMENT: "DEV"
-  ###
-  ### LB_TAG: REQUIRED
-  ### Should be a unique identifier and change each run (e.g., job/build number)
-  ### LB_TAG: "12345"
-  LB_TAG: "${LB_TAG:-MIZUHO}"
-  ###
   ### Secrets: REQUIRED
   ### These values should be pulled from a secure vault via pipeline or Liquibase Pro extension
   ### https://docs.liquibase.com/tools-integrations/extensions/secrets-management/home.html
@@ -66,12 +53,26 @@ globalVariables:
   ### LIQUIBASE_COMMAND_CHECKS_RUN_CHECKS_OUTPUT: "issues"
   ### LIQUIBASE_SHOW_BANNER: "false"
   ###
-  ### Label filters
+  ### LB_BASE_DIR: REQUIRED
+  ### The directory to write Liquibase output (e.g., logs, reports)
+  ### LB_BASE_DIR: "/liquibase/changelogs"
+  ###
+  ### LB_ENVIRONMENT: REQUIRED
+  ### The environment within the pipeline to operate on (e.g., DEV, UAT, PROD)
+  ### LB_ENVIRONMENT: "DEV"
+  ###
+  ### LB_LABELS
   ### Used to specify which changesets to deploy (defaults to all)
   ### Set LB_LABELS variable from automation tool
   ### https://docs.liquibase.com/concepts/changelogs/attributes/labels.html
   ###
   LB_LABELS: "${LB_LABELS:-null}"
+  ###
+  ### LB_TAG
+  ### Used to specify the database tag
+  ### Should be a unique identifier and change each run (e.g., job/build number)
+  ### https://docs.liquibase.com/commands/utility/tag.html
+  LB_TAG: "${LB_TAG:-LBPRO}"
   ###
   ### Files
   ###
@@ -136,6 +137,7 @@ stages:
       - type: liquibase
         if: "${LB_SHOW_UPDATE_SQL} == 'T'"
         command: update-sql
+        cmdArgs: { label-filter: "${LB_LABELS}" }
       #
       # Update database
       # https://docs.liquibase.com/commands/update/update.html
