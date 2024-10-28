@@ -10,7 +10,6 @@ Liquibase Pro enables best practices that are designed to remove friction from t
 ## Liquibase Documentation
 * [Documentation Home](https://docs.liquibase.com/home.html)
 * [Liquibase University](https://learn.liquibase.com/)
-* [Liquibase Forums](https://forum.liquibase.org/)
 
 ## Installing Liquibase
 Liquibase can be [installed locally](https://www.liquibase.com/download) on Windows, Mac, or Linux platforms (e.g., a workstation or automation tool agent/runner) or invoked using our [official Docker image](https://hub.docker.com/_/liquibase).
@@ -37,7 +36,7 @@ Changelog formats can be mixed and matched as desired. Liquibase does not impose
     * [XML - Relational](changesets/changelog.ddl.xml)
 
 ```
-Tree
+/
 │   changelog.mongo.xml
 │   changelog.relational.sql
 │   changelog.relational.xml
@@ -51,7 +50,7 @@ Tree
 ## Database Connections
 Liquibase supports over [60 databases](https://www.liquibase.com/supported-databases), including data warehouses, relational, and NoSQL.
 
-A [liquibase.properties](https://docs.liquibase.com/concepts/connections/creating-config-properties.html) file can be used for basic testing. However, it is **strongly** recommended that [environment variables](https://docs.liquibase.com/concepts/connections/liquibase-environment-variables.html) or a [secrets manager extension](https://docs.liquibase.com/liquibase-pro/secrets-management/home.html) be used for any scenario beyond that.
+A [liquibase.properties](https://docs.liquibase.com/concepts/connections/creating-config-properties.html) file can be used for basic testing. However, it is **STRONGLY** recommended that [environment variables](https://docs.liquibase.com/concepts/connections/liquibase-environment-variables.html) or a [secrets manager extension](https://docs.liquibase.com/liquibase-pro/secrets-management/home.html) be used for any scenario beyond that.
 
 In general, Liquibase needs three pieces of information to connect to a database.
 
@@ -64,13 +63,14 @@ The exact information required may vary between individual database platforms. C
 ## Helpful Liquibase Commands
 |Command |Description|Documentation
 |----------|------------|------------|
+| flow | Execute a Liquibase workflow | [Link](https://docs.liquibase.com/commands/flow/flow.html)
 | connect | Test database connection | [Link](https://docs.liquibase.com/commands/change-tracking/connect.html)
 | status | Show undeployed changes | [Link](https://docs.liquibase.com/commands/change-tracking/status.html)
 | update | Run changes against target database | [Link](https://docs.liquibase.com/change-types/update.html)
 | history | Show deployed changes | [Link](https://docs.liquibase.com/commands/change-tracking/history.html)
 | rollback-one-update | Rollback the last or a specified update | [Link](https://docs.liquibase.com/commands/rollback/rollback-one-update.html)
 | checks | Show or view policy checks | [Link](https://docs.liquibase.com/liquibase-pro/policy-checks/workflows/home.html)
-| flow | Execute a Liquibase workflow | [Link](https://docs.liquibase.com/commands/flow/flow.html)
+
 
 ## Liquibase in Automation
 Liquibase Pro can work with any automation tool which supports invoking command-line tools. Liquibase provides working examples for some popular automation platforms.
@@ -105,7 +105,6 @@ Sample flow files are included in this repository.
 
 ## Contact Liquibase
 * Liquibase sales: https://www.liquibase.com/contact
-* Liquibase support: https://support.liquibase.com/
 
 # Thank you!
 Thank you for evaluating Liquibase Pro! We hope to be a part of your DevOps journey.
