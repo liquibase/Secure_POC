@@ -126,7 +126,7 @@ stages:
       #
       - type: liquibase
         command: status
-        cmdArgs: { label-filter: "${LB_LABELS}", verbose: "true" }
+        cmdArgs: { label-filter: "${LB_LABELS}" }
   PolicyChecks:
     actions:
       #
