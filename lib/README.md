@@ -11,6 +11,7 @@ liquibase --version
 
 Here are links to some popular extensions.
 * [AWS Secrets Manager](https://docs.liquibase.com/liquibase-pro/secrets-management/aws-secrets-mgr.html)
+* [Liquibase Custom Policy Checks](https://mvnrepository.com/artifact/org.liquibase.ext/liquibase-checks)
 * [Databricks JDBC Driver](https://www.databricks.com/spark/jdbc-drivers-download)
 * [Liquibase Databricks Extension](https://github.com/liquibase/liquibase-databricks)
 * [MySQL JDBC Driver](https://dev.mysql.com/downloads/connector/j/)

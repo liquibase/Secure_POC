@@ -13,11 +13,9 @@ Liquibase Pro enables best practices that are designed to remove friction from t
 * [Liquibase Forums](https://forum.liquibase.org/)
 
 ## Installing Liquibase
-Liquibase can be installed locally (e.g., on a workstation or automation tool agent/runner) or invoked using our [official Docker image](https://hub.docker.com/_/liquibase).
+Liquibase can be [installed locally](https://www.liquibase.com/download) on Windows, Mac, or Linux platforms (e.g., a workstation or automation tool agent/runner) or invoked using our [official Docker image](https://hub.docker.com/_/liquibase).
 
-Liquibase can be downloaded for Windows, Max, and Linux platforms [here](https://www.liquibase.com/download).
-
-To apply your Pro license key, check [here](https://docs.liquibase.com/liquibase-pro/license-key.html).
+To apply your Pro license key, follow the instructions [here](https://docs.liquibase.com/liquibase-pro/license-key.html).
 
 
 ## Core Concepts
