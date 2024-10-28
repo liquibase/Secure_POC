@@ -124,13 +124,6 @@ stages:
   Deploy:
     actions:
       #
-      # Tag database
-      # https://docs.liquibase.com/commands/utility/tag.html
-      #
-      - type: liquibase
-        command: tag
-        cmdArgs: { tag: "${LB_TAG}" }
-      #
       # View pending SQL
       # https://docs.liquibase.com/commands/update/update-sql.html
       #
@@ -148,21 +141,21 @@ stages:
       #
       # Test rollbacks - view sql
       # Typically non-production only
-      # https://docs.liquibase.com/commands/rollback/rollback-sql.html
+      # https://docs.liquibase.com/commands/rollback/rollback-one-update-sql.html
       #
       - type: liquibase
         if: "${LB_TEST_ROLLBACKS} == 'T' && !CONTAINS('${LB_ENVIRONMENT}', 'PROD')"
-        command: rollback-sql
-        cmdArgs: { tag: "${LB_TAG}" }
+        command: rollbackoneupdate-sql
+        cmdArgs: { force: "true" }
       #
-      # Test rollbacks - rollback to tag
+      # Test rollbacks - rollback last successful deployment update
       # Typically non-production only
-      # https://docs.liquibase.com/commands/rollback/rollback-by-tag.html
+      # https://docs.liquibase.com/commands/rollback/rollback-one-update.html
       #
       - type: liquibase
         if: "${LB_TEST_ROLLBACKS} == 'T' && !CONTAINS('${LB_ENVIRONMENT}', 'PROD')"
-        command: rollback
-        cmdArgs: { report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${ROLLBACK_REPORT}", tag: "${LB_TAG}" }
+        command: rollbackoneupdate-sql
+        cmdArgs: { report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${ROLLBACK_REPORT}", force: "true" }
       #
       # Test rollbacks - reapply changes
       # Typically non-production only
