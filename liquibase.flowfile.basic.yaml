@@ -2,7 +2,7 @@
 ### This flowfile is intended to highlight capabilities of Liquibase Pro
 ### Review and update prior to use
 ###
-### Liquibase version: 4.27.0+
+### Liquibase version: 4.30.0+
 ###
 ### Liquibase sales: https://www.liquibase.com/contact-us
 ### Liquibase support: https://support.liquibase.com/knowledge
@@ -26,17 +26,20 @@
 globalVariables:
   ###
   ### These variables are typically set via automation tools (see pipeline examples)
+  ### NOTE: Any LIQUIBASE_* variable must be set outside flow!
   ###
   ### LIQUIBASE_SEARCH_PATH: REQUIRED
+  ### https://docs.liquibase.com/parameters/search-path.html
   ### Use absolute paths when using Liquibase's Docker container
   ### LIQUIBASE_SEARCH_PATH: "/liquibase/changelog"
   ###
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: REQUIRED
+  ### https://docs.liquibase.com/concepts/changelogs/home.html
   ### Root Liquibase changelog file
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: "changelog.main.xml"
   ###
   ### Secrets: REQUIRED
-  ### These values should be pulled from a secure vault via pipeline or Liquibase Pro extension
+  ### These variables should be pulled from a secure vault via pipeline or Liquibase Pro extension
   ### https://docs.liquibase.com/tools-integrations/extensions/secrets-management/home.html
   ###
   ### LIQUIBASE_COMMAND_URL: "jdbc:h2:tcp://localhost:9090/mem:dev"
@@ -55,15 +58,18 @@ globalVariables:
   ###
   ### Other settings
   ### LIQUIBASE_COMMAND_CHECKS_RUN_CHECKS_OUTPUT: "issues"
+  ### LIQUIBASE_COMMAND_CHECKS_RUN_CHECKS_SCRIPTS_ENABLED: "true"
   ### LIQUIBASE_SHOW_BANNER: "false"
   ###
   ### LB_BASE_DIR: REQUIRED
   ### The directory to write Liquibase output (e.g., logs, reports)
   ### LB_BASE_DIR: "/liquibase/changelogs"
+  LB_BASE_DIR: "${LB_BASE_DIR:-.}"
   ###
   ### LB_ENVIRONMENT: REQUIRED
   ### The environment within the pipeline to operate on (e.g., DEV, UAT, PROD)
   ### LB_ENVIRONMENT: "DEV"
+  LB_ENVIRONMENT: "${LB_ENVIRONMENT:-DEV}"
   ###
   ### LB_LABELS
   ### Used to specify which changesets to deploy (defaults to all)
