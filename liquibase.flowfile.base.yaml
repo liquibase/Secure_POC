@@ -67,7 +67,7 @@ globalVariables:
   ### Set LB_LABELS variable from automation tool
   ### https://docs.liquibase.com/concepts/changelogs/attributes/labels.html
   ###
-  LB_LABELS: "${LB_LABELS:-null}"
+  LB_LABELS: "${LB_LABELS:-LBPRO}"
 
 ###
 ### Stages to execute
@@ -87,10 +87,3 @@ stages:
       #
       - type: liquibase
         command: validate
-      #
-      # View pending changes
-      # https://docs.liquibase.com/commands/change-tracking/status.html
-      #
-      - type: liquibase
-        command: status
-        cmdArgs: { label-filter: "${LB_LABELS}" }

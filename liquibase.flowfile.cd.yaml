@@ -77,7 +77,7 @@ globalVariables:
   ### Set LB_LABELS variable from automation tool
   ### https://docs.liquibase.com/concepts/changelogs/attributes/labels.html
   ###
-  LB_LABELS: "${LB_LABELS:-null}"
+  LB_LABELS: "${LB_LABELS:-LBPRO}"
   ###
   ### LB_TAG
   ### Used to specify the database tag
@@ -120,6 +120,13 @@ stages:
       - type: liquibase
         command: flow
         cmdArgs: { flow-file: "${BASE_FLOW_FILE}" }
+      #
+      # View pending changes
+      # https://docs.liquibase.com/commands/change-tracking/status.html
+      #
+      - type: liquibase
+        command: status
+        cmdArgs: { label-filter: "${LB_LABELS}" }
   DriftDetection:
     actions:
       #
@@ -131,7 +138,7 @@ stages:
         if: "exists('${SNAPSHOT_FILE}', false) && ${LB_TEST_DRIFT} == 'T'"
         command: diff
         globalArgs: { outputfile: "${LB_BASE_DIR}/${DIFF_FILE}" }
-        cmdArgs: { drift-severity: "1", report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${DRIFT_REPORT}", referenceURL: "offline:databricks?snapshot=${SNAPSHOT_FILE}", format: json }
+        cmdArgs: { drift-severity: "1", report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${DRIFT_REPORT}", referenceURL: "offline:mssql?snapshot=${SNAPSHOT_FILE}", format: json }
   Deploy:
     actions:
       #

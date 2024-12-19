@@ -101,6 +101,13 @@ stages:
       - type: liquibase
         command: flow
         cmdArgs: { flow-file: "${BASE_FLOW_FILE}" }
+      #
+      # View pending changes
+      # https://docs.liquibase.com/commands/change-tracking/status.html
+      #
+      - type: liquibase
+        command: status
+        cmdArgs: { label-filter: "${LB_LABELS}" }
   PolicyChecks:
     actions:
       #
