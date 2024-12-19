@@ -77,7 +77,7 @@ globalVariables:
   ### Set LB_LABELS variable from automation tool
   ### https://docs.liquibase.com/concepts/changelogs/attributes/labels.html
   ###
-  LB_LABELS: "${LB_LABELS:-LBPRO}"
+  LB_LABELS: "${LB_LABELS:-null}"
   ###
   ### LB_TAG
   ### Used to specify the database tag
