@@ -1,0 +1,12 @@
+{
+    "databaseChangeLog": 
+    [
+        {
+        "include": { "file": "changesets/changelog.mongo.js" }
+        },
+        {
+        "includeAll": { "relativeToChangelogFile":true, "path":"changesets/demo", "errorIfMissingOrEmpty":"false" }
+        }
+    ]
+        
+}
