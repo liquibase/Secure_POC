@@ -28,7 +28,9 @@ Changelog formats can be mixed and matched as desired. Liquibase does not impose
 
 ## Sample Changelogs
 
-* [Root - Mongo](changelog.mongo.xml)
+* [Root - Mongo - JS](changelog.mongo.json)
+    * [JS - Mongo](changesets/changelog.mongo.js)
+* [Root - Mongo - XML](changelog.mongo.xml)
     * [JS - Mongo](changesets/changelog.mongo.js)
 * [Root - SQL](changelog.relational.sql)
     * [SQL - Relational](changesets/changelog.ddl.sql)
