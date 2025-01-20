@@ -8,5 +8,4 @@
         "includeAll": { "relativeToChangelogFile":true, "path":"changesets/demo", "errorIfMissingOrEmpty":"false" }
         }
     ]
-        
 }
