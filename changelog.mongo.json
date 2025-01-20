@@ -5,7 +5,7 @@
         "include": { "file": "changesets/changelog.mongo.js" }
         },
         {
-        "includeAll": { "relativeToChangelogFile":true, "path":"changesets/demo", "errorIfMissingOrEmpty":"false" }
+        "includeAll": { "relativeToChangelogFile":true, "path":"changesets/folder1", "errorIfMissingOrEmpty":"false" }
         }
     ]
 }
