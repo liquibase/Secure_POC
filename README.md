@@ -39,6 +39,7 @@ Changelog formats can be mixed and matched as desired. Liquibase does not impose
 
 ```
 /
+|   changelog.mongo.json
 │   changelog.mongo.xml
 │   changelog.relational.sql
 │   changelog.relational.xml
