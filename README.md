@@ -59,7 +59,7 @@ In general, Liquibase needs three pieces of information to connect to a database
 
 The exact information required may vary between individual database platforms. Consult [the database documentation](https://www.liquibase.com/supported-databases) for specific details.
 
-# ❓ Helpful Liquibase Commands
+# ❓ Helpful Commands
 |Command |Description|Documentation
 |----------|------------|------------|
 | connect | Test database connection | [Link](https://docs.liquibase.com/commands/change-tracking/connect.html)
