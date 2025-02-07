@@ -57,7 +57,7 @@ In general, Liquibase needs three pieces of information to connect to a database
 1. Username: typically a service account
 1. Password: typically stored within a vault
 
-The exact information required may vary between individual database platforms. Consult [the database documentation](https://www.liquibase.com/supported-databases) for specific details.
+The exact information required may vary between individual database platforms. Consult [the database documentation](https://docs.liquibase.com/start/tutorials/home.html) for specific details.
 
 # ❓ Helpful Commands
 |Command |Description|Documentation
