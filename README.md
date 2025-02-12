@@ -25,7 +25,7 @@ If you are unfamilar with Liquibase concepts, here is some information to get yo
 
 Changelog formats can be mixed and matched as desired. Liquibase does not impose any file name requirements.
 
-# 📁 Sample Changelogs
+# 📂 Sample Changelogs
 * [Root - Mongo - JS](changelog.mongo.json)
     * [JS - Mongo](changesets/changelog.mongo.js)
 * [Root - Mongo - XML](changelog.mongo.xml)
@@ -102,7 +102,7 @@ Sample flow files are included in this repository.
     * [liquibase.flowfile.cd.yaml](liquibase.flowfile.cd.yaml): flow for Continuous Delievery
 
 # ☎️ Contact Liquibase
-* Liquibase sales: https://www.liquibase.com/contact
+Liquibase sales: https://www.liquibase.com/contact<br>
 
 # ⭐ Thank you!
 Thank you for evaluating Liquibase Pro! We hope to be a part of your DevOps journey.
