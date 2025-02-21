@@ -101,6 +101,11 @@ Sample flow files are included in this repository.
     * [liquibase.flowfile.ci.yaml](liquibase.flowfile.ci.yaml): flow for Continuous Integration
     * [liquibase.flowfile.cd.yaml](liquibase.flowfile.cd.yaml): flow for Continuous Delievery
 
+# 🔦 Troubleshooting
+* [Installation issues](https://docs.liquibase.com/start/install/liquibase-installation-troubleshooting.html)
+* [Common issues](https://support.liquibase.com/hc/en-us/sections/27504481958555-Troubleshooting)
+* [Liquibase University](https://learn.liquibase.com/catalog/info/id:127)
+
 # ☎️ Contact Liquibase
 Liquibase sales: https://www.liquibase.com/contact-us<br>
 
