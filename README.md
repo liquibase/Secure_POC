@@ -3,20 +3,20 @@
 </p>
 
 # 👋 Welcome to Liquibase!
-Liquibase Secure (formerly Liquibase Pro) is database change management made easy. This repository contains links to documentation, sample files, and tips for evaluating Liquibase. This evaluation is intended for people interested in learning about the capabilities of Liquibase Secure
+Liquibase Secure (formerly Liquibase Pro) is database change management made easy. This repository contains links to documentation, sample files, and tips for evaluating Liquibase. This evaluation is intended for people interested in learning about the capabilities of Liquibase Secure.
 
 
 # 📒 Liquibase Documentation
 * [Documentation Home](https://docs.liquibase.com/home.html)
 * [Liquibase University](https://learn.liquibase.com/)
 
-# 🔧 Installing Liquibase
-Liquibase can be [installed locally](https://www.liquibase.com/download-secure) on Windows, Mac, or Linux platforms (e.g., a workstation or automation tool agent/runner) or invoked using our [Docker image](https://hub.docker.com/r/liquibase/liquibase-secure).
+# 🔧 Installing Liquibase Secure
+Liquibase Secure can be [installed locally](https://www.liquibase.com/download-secure) on Windows, Mac, or Linux platforms (e.g., a workstation or automation tool agent/runner) or invoked using our [Docker image](https://hub.docker.com/r/liquibase/liquibase-secure).
 
 To apply your license key, follow the instructions [here](https://docs.liquibase.com/secure/get-started-5-0/apply-your-liquibase-secure-license-key).
 
-# 💡 Core Concepts
-If you are unfamilar with Liquibase concepts, here is some information to get you started.
+# 💡 Liquibase Secure Concepts
+If you are unfamilar with Liquibase, here is some information to get you started.
 
 * [Changeset](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changeset): basic unit of database work
 * [Changelog](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changelog): text file containing collection of changesets
@@ -69,7 +69,7 @@ The exact information required may vary between individual database platforms. C
 | rollback-one-update | Rollback the last or a specified update | [Link](https://docs.liquibase.com/reference-guide/init-update-and-rollback-commands/rollback-one-update-sql)
 | checks | Show or view policy checks | [Link](https://docs.liquibase.com/secure/user-guide-5-0/what-are-policy-checks)
 
-# 🚀 Liquibase in Automation
+# 🚀 Liquibase Secure in Automation
 Liquibase Secure can work with any automation tool which supports invoking command-line tools. Liquibase provides working examples for some popular automation platforms.
 
 * [Ansible Tower](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Ansible_Tower/liquibase_playbook.yml)
@@ -81,7 +81,7 @@ Liquibase Secure can work with any automation tool which supports invoking comma
 * [GitLab](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/GitLab/gitlab-ci.yml)
 * [Jenkins](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Jenkins/Jenkinsfile) 
 
-# 🔩 Liquibase Secure Core Features
+# 🔩 Liquibase Secure Core Capabilities
 During a typical evaluation the following features are exercised.
 
 1. [Policy Checks](https://docs.liquibase.com/secure/user-guide-5-0/what-are-policy-checks): similar to static code analysis, but geared more for database changes. Policy Checks can be customized by team, database, etc. Sample Regex and Python checks can be found [here](https://github.com/liquibase/custom_policychecks).
