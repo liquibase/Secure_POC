@@ -1,8 +1,8 @@
 ###
-### This flowfile is intended to highlight capabilities of Liquibase Pro
+### This flowfile is intended to highlight capabilities of Liquibase Secure (formerly Liquibase Pro)
 ### Review and update prior to use
 ###
-### Liquibase version: 4.30.0+
+### Liquibase version: 5.00.0+
 ###
 ### Liquibase sales: https://www.liquibase.com/contact-us
 ### Liquibase support: https://support.liquibase.com
@@ -13,11 +13,11 @@
 ###
 ### 1. liquibase.checks-settings.conf
 ###    Liquibase policy checks configuration file
-###    https://docs.liquibase.com/liquibase-pro/policy-checks/home.html
+###    https://docs.liquibase.com/secure/user-guide-5-0/use-checks-settings-file
 ###
 ### 2. changelog.main.xml
 ###    Root Liquibase changelog file
-###    https://docs.liquibase.com/concepts/changelogs/home.html
+###    https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changelog
 ###
 
 ###
@@ -30,18 +30,18 @@ globalVariables:
   ### Value after ":-" in assignment is default value
   ###
   ### LIQUIBASE_SEARCH_PATH: REQUIRED
-  ### https://docs.liquibase.com/parameters/search-path.html
+  ### https://docs.liquibase.com/reference-guide/parameters/search-path
   ### Use absolute paths when using Liquibase's Docker container
   ### LIQUIBASE_SEARCH_PATH: "/liquibase/changelog"
   ###
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: REQUIRED
   ### Root Liquibase changelog file
-  ### https://docs.liquibase.com/concepts/changelogs/home.html
+  ### https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changelog
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: "changelog.main.xml"
   ###
   ### Secrets: REQUIRED
-  ### These variables should be pulled from a secure vault via pipeline or Liquibase Pro extension
-  ### https://docs.liquibase.com/tools-integrations/extensions/secrets-management/home.html
+  ### These variables should be pulled from a secure vault via pipeline or Liquibase Secure extension
+  ### https://docs.liquibase.com/secure/user-guide-5-0/what-are-liquibase-secrets-management-extensions
   ###
   ### LIQUIBASE_COMMAND_URL: "jdbc:h2:tcp://localhost:9090/mem:dev"
   ### LIQUIBASE_COMMAND_USERNAME: "dbuser"
@@ -49,8 +49,8 @@ globalVariables:
   ### LIQUIBASE_LICENSE_KEY: "12345"
   ###
   ### Structured logging
-  ### Liquibase logs can be ingested by any standard observability tool (e.g., CloudWatch, Datadog, Elastic, Splunk)
-  ### https://docs.liquibase.com/tools-integrations/observability/structured-logging.html
+  ### Liquibase Secure JSON logs can be ingested by any standard observability tool (e.g., CloudWatch, Datadog, Elastic, Splunk)
+  ### https://docs.liquibase.com/secure/user-guide-5-0/what-is-structured-logging
   ###
   ### LIQUIBASE_LOG_FILE: "liquibase.log.json"
   ### LIQUIBASE_LOG_FORMAT: "json"
@@ -65,7 +65,7 @@ globalVariables:
   ### LB_LABELS
   ### Used to specify which changesets to deploy (defaults to all)
   ### Set LB_LABELS variable from automation tool
-  ### https://docs.liquibase.com/concepts/changelogs/attributes/labels.html
+  ### https://docs.liquibase.com/reference-guide/changelog-attributes/what-are-labels
   ###
   LB_LABELS: "${LB_LABELS:-LBPRO}"
 
@@ -77,13 +77,13 @@ stages:
     actions:
       #
       # Validate database connection
-      # https://docs.liquibase.com/commands/change-tracking/connect.html
+      # https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/connect
       #
       - type: liquibase
         command: connect
       #
       # Validate changelog
-      # https://docs.liquibase.com/commands/utility/validate.html
+      # https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/validate
       #
       - type: liquibase
         command: validate

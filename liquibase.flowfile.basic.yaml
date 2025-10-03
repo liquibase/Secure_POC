@@ -1,8 +1,8 @@
 ###
-### This flowfile is intended to highlight capabilities of Liquibase Pro
+### This flowfile is intended to highlight capabilities of Liquibase Secure (formerly Liquibase Pro)
 ### Review and update prior to use
 ###
-### Liquibase version: 4.30.0+
+### Liquibase version: 5.00.0+
 ###
 ### Liquibase sales: https://www.liquibase.com/contact-us
 ### Liquibase support: https://support.liquibase.com
@@ -13,11 +13,11 @@
 ###
 ### 1. liquibase.checks-settings.conf
 ###    Liquibase policy checks configuration file
-###    https://docs.liquibase.com/liquibase-pro/policy-checks/home.html
+###    https://docs.liquibase.com/secure/user-guide-5-0/use-checks-settings-file
 ###
 ### 2. changelog.main.xml
 ###    Root Liquibase changelog file
-###    https://docs.liquibase.com/concepts/changelogs/home.html
+###    https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changelog
 ###
 
 ###
@@ -30,18 +30,18 @@ globalVariables:
   ### Value after ":-" in assignment is default value
   ###
   ### LIQUIBASE_SEARCH_PATH: REQUIRED
-  ### https://docs.liquibase.com/parameters/search-path.html
+  ### https://docs.liquibase.com/reference-guide/parameters/search-path
   ### Use absolute paths when using Liquibase's Docker container
   ### LIQUIBASE_SEARCH_PATH: "/liquibase/changelog"
   ###
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: REQUIRED
   ### Root Liquibase changelog file
-  ### https://docs.liquibase.com/concepts/changelogs/home.html
+  ### https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changelog
   ### LIQUIBASE_COMMAND_CHANGELOG_FILE: "changelog.main.xml"
   ###
   ### Secrets: REQUIRED
-  ### These variables should be pulled from a secure vault via pipeline or Liquibase Pro extension
-  ### https://docs.liquibase.com/tools-integrations/extensions/secrets-management/home.html
+  ### These variables should be pulled from a secure vault via pipeline or Liquibase Secure extension
+  ### https://docs.liquibase.com/secure/user-guide-5-0/what-are-liquibase-secrets-management-extensions
   ###
   ### LIQUIBASE_COMMAND_URL: "jdbc:h2:tcp://localhost:9090/mem:dev"
   ### LIQUIBASE_COMMAND_USERNAME: "dbuser"
@@ -49,8 +49,8 @@ globalVariables:
   ### LIQUIBASE_LICENSE_KEY: "12345"
   ###
   ### Structured logging
-  ### Liquibase logs can be ingested by any standard observability tool (e.g., CloudWatch, Datadog, Elastic, Splunk)
-  ### https://docs.liquibase.com/tools-integrations/observability/structured-logging.html
+  ### Liquibase Secure JSON logs can be ingested by any standard observability tool (e.g., CloudWatch, Datadog, Elastic, Splunk)
+  ### https://docs.liquibase.com/secure/user-guide-5-0/what-is-structured-logging
   ###
   ### LIQUIBASE_LOG_FILE: "liquibase.log.json"
   ### LIQUIBASE_LOG_FORMAT: "json"
@@ -75,33 +75,24 @@ globalVariables:
   ### LB_LABELS
   ### Used to specify which changesets to deploy (defaults to all)
   ### Set LB_LABELS variable from automation tool
-  ### https://docs.liquibase.com/concepts/changelogs/attributes/labels.html
+  ### https://docs.liquibase.com/reference-guide/changelog-attributes/what-are-labels
   ###
   LB_LABELS: "${LB_LABELS:-null}"
   ###
-  ### Files
-  ###
-  DIFF_FILE: "Diff_${LB_ENVIRONMENT}.json"
-  SNAPSHOT_FILE: "Snapshot_${LB_ENVIRONMENT}.json"
-  ###
   ### Operational Reports
-  ### Liquibase Pro creates operational reports for certain commands
-  ### These reports can be copied to a shared location for distribution to users (e.g., S3)
-  ### https://docs.liquibase.com/tools-integrations/observability/operation-reports.html
+  ### Liquibase Secure creates operational reports for certain commands
+  ### These reports can be copied to a shared location for distribution to users (e.g., S3, Azure Blob Storage)
+  ### https://docs.liquibase.com/secure/user-guide-5-0/what-are-operation-reports
   ###
   CHECKS_REPORT: "Checks_${LB_ENVIRONMENT}.html"
-  DRIFT_REPORT: "Diff_${LB_ENVIRONMENT}.html"
-  ROLLBACK_REPORT: "Rollback_${LB_ENVIRONMENT}.html"
   UPDATE_REPORT: "Update_${LB_ENVIRONMENT}.html"
   ###
   ### Workflow features
-  ### Set these flags to T/F to turn Liquibase Pro features on/off
+  ### Set these flags to T/F to turn Liquibase Secure features on/off
   ### These flags can also be set dynamically by an automation tool based on user input, environment, team, etc.
   ###
   LB_SHOW_UPDATE_SQL: "${LB_SHOW_UPDATE_SQL:-F}"
   LB_TEST_CHECKS: "${LB_TEST_CHECKS:-T}"
-  LB_TEST_DRIFT: "${LB_TEST_DRIFT:-T}"
-  LB_TEST_ROLLBACKS: "${LB_TEST_ROLLBACKS:-F}"
 
 ###
 ### Stages to execute
@@ -111,19 +102,19 @@ stages:
     actions:
       #
       # Validate database connection
-      # https://docs.liquibase.com/commands/change-tracking/connect.html
+      # https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/connect
       #
       - type: liquibase
         command: connect
       #
       # Validate changelog
-      # https://docs.liquibase.com/commands/utility/validate.html
+      # https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/validate
       #
       - type: liquibase
         command: validate
       #
       # View pending changes
-      # https://docs.liquibase.com/commands/change-tracking/status.html
+      # https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/status
       #
       - type: liquibase
         command: status
@@ -132,7 +123,7 @@ stages:
     actions:
       #
       # Show policy checks
-      # https://docs.liquibase.com/liquibase-pro/policy-checks/home.html
+      # https://docs.liquibase.com/secure/user-guide-5-0/what-are-policy-checks
       #
       - type: liquibase
         if: "${LB_TEST_CHECKS} == T"
@@ -140,29 +131,17 @@ stages:
         cmdArgs: { check-status: "enabled" }
       #
       # Run policy checks
-      # https://docs.liquibase.com/liquibase-pro/policy-checks/home.html
+      # https://docs.liquibase.com/secure/user-guide-5-0/what-are-policy-checks
       #
       - type: liquibase
         if: "${LB_TEST_CHECKS} == T"
         command: checks run
         cmdArgs: { report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${CHECKS_REPORT}", checks-scope: "changelog, database", changeset-filter: "pending", auto-update: "on" }
-  DriftDetection:
-    actions:
-      #
-      # Run diff and check for drift
-      # Update referenceURL database type in cmdArgs (e.g., oracle, mssql, snowflake, etc.)
-      # https://docs.liquibase.com/commands/inspection/diff.html
-      #
-      - type: liquibase
-        if: "exists('${SNAPSHOT_FILE}', false) && ${LB_TEST_DRIFT} == 'T'"
-        command: diff
-        globalArgs: { outputfile: "${LB_BASE_DIR}/${DIFF_FILE}" }
-        cmdArgs: { drift-severity: "1", report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${DRIFT_REPORT}", referenceURL: "offline:redshift?snapshot=${SNAPSHOT_FILE}", format: json }
   Deploy:
     actions:
       #
       # Exit if no pending changes
-      # https://docs.liquibase.com/liquibase-pro/flow/home.html
+      # https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-flow-file
       #
       - type: control
         if: "status.changesetCount == 0"
@@ -170,7 +149,7 @@ stages:
         cmdArgs: { exitCode: "0", exitMessage: "Database is current!" }
       #
       # View pending SQL
-      # https://docs.liquibase.com/commands/update/update-sql.html
+      # https://docs.liquibase.com/reference-guide/init-update-and-rollback-commands/update-sql
       #
       - type: liquibase
         if: "${LB_SHOW_UPDATE_SQL} == 'T'"
@@ -178,47 +157,11 @@ stages:
         cmdArgs: { label-filter: "${LB_LABELS}" }
       #
       # Update database
-      # https://docs.liquibase.com/commands/update/update.html
+      # https://docs.liquibase.com/reference-guide/init-update-and-rollback-commands/update
       #
       - type: liquibase
         command: update
         cmdArgs: { label-filter: "${LB_LABELS}", report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${UPDATE_REPORT}" }
-      #
-      # Test rollbacks - view sql
-      # Typically non-production only
-      # https://docs.liquibase.com/commands/rollback/rollback-one-update-sql.html
-      #
-      - type: liquibase
-        if: "${LB_TEST_ROLLBACKS} == 'T' && !CONTAINS('${LB_ENVIRONMENT}', 'PROD')"
-        command: rollback-one-update-sql
-      #
-      # Test rollbacks - rollback last deployment
-      # Typically non-production only
-      # https://docs.liquibase.com/commands/rollback/rollback-one-update.html
-      #
-      - type: liquibase
-        if: "${LB_TEST_ROLLBACKS} == 'T' && !CONTAINS('${LB_ENVIRONMENT}', 'PROD')"
-        command: rollback-one-update
-        cmdArgs: { force: "true", report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${ROLLBACK_REPORT}" }
-      #
-      # Test rollbacks - reapply changes
-      # Typically non-production only
-      # https://docs.liquibase.com/commands/update/update.html
-      #
-      - type: liquibase
-        if: "${LB_TEST_ROLLBACKS} == 'T' && !CONTAINS('${LB_ENVIRONMENT}', 'PROD')"
-        command: update
-        cmdArgs: { label-filter: "${LB_LABELS}", report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${UPDATE_REPORT}" }
-  PostDeploy:
-    actions:
-      #
-      # Create updated snapshot
-      # https://docs.liquibase.com/commands/inspection/snapshot.html
-      #
-      - type: liquibase
-        command: snapshot
-        globalArgs: { outputfile: "${LB_BASE_DIR}/${SNAPSHOT_FILE}" }
-        cmdArgs: { snapshotFormat: "json" }
 
 ###
 ### Always execute
@@ -227,7 +170,7 @@ endStage:
   actions:
     #
     # Show deployed changes
-    # https://docs.liquibase.com/commands/change-tracking/history.html
+    # https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/history
     #
     - type: liquibase
       command: history

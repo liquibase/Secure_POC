@@ -3,25 +3,24 @@
 </p>
 
 # 👋 Welcome to Liquibase!
-This repository contains links to documentation, sample files, and tips for evaluating Liquibase. This evaluation is intended for people interested in learning about the capabilities of Liquibase Pro.
+Liquibase Secure (formerly Liquibase Pro) is database change management made easy. This repository contains links to documentation, sample files, and tips for evaluating Liquibase. This evaluation is intended for people interested in learning about the capabilities of Liquibase Secure
 
-Liquibase Pro enables best practices that are designed to remove friction from the flow of changes to databases. These practices ensure speed, quality, and governance within the change process.
 
 # 📒 Liquibase Documentation
 * [Documentation Home](https://docs.liquibase.com/home.html)
 * [Liquibase University](https://learn.liquibase.com/)
 
 # 🔧 Installing Liquibase
-Liquibase can be [installed locally](https://www.liquibase.com/download) on Windows, Mac, or Linux platforms (e.g., a workstation or automation tool agent/runner) or invoked using our [official Docker image](https://hub.docker.com/_/liquibase).
+Liquibase can be [installed locally](https://www.liquibase.com/download-secure) on Windows, Mac, or Linux platforms (e.g., a workstation or automation tool agent/runner) or invoked using our [Docker image](https://hub.docker.com/r/liquibase/liquibase-secure).
 
-To apply your Pro license key, follow the instructions [here](https://docs.liquibase.com/liquibase-pro/license-key.html).
+To apply your license key, follow the instructions [here](https://docs.liquibase.com/secure/get-started-5-0/apply-your-liquibase-secure-license-key).
 
 # 💡 Core Concepts
 If you are unfamilar with Liquibase concepts, here is some information to get you started.
 
-* [Changeset](https://docs.liquibase.com/concepts/changelogs/changeset.html): basic unit of database work
-* [Changelog](https://docs.liquibase.com/concepts/changelogs/home.html): text file containing collection of changesets
-* [Tracking tables](https://docs.liquibase.com/concepts/tracking-tables/tracking-tables.html): tables created and maintained by Liquibase
+* [Changeset](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changeset): basic unit of database work
+* [Changelog](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-changelog): text file containing collection of changesets
+* [Tracking tables](https://docs.liquibase.com/secure/user-guide-5-0/what-is-the-databasechangelog-table): tables created and maintained by Liquibase
 
 Changelog formats can be mixed and matched as desired. Liquibase does not impose any file name requirements.
 
@@ -49,48 +48,47 @@ Changelog formats can be mixed and matched as desired. Liquibase does not impose
 # 💻 Database Connections
 Liquibase supports over [60 databases](https://www.liquibase.com/supported-databases), including data warehouses, relational, and NoSQL.
 
-A [liquibase.properties](https://docs.liquibase.com/concepts/connections/creating-config-properties.html) file can be used for basic testing. However, it is **strongly** recommended that [environment variables](https://docs.liquibase.com/concepts/connections/liquibase-environment-variables.html) or a [secrets manager extension](https://docs.liquibase.com/liquibase-pro/secrets-management/home.html) be used for any scenario beyond that.
+A [liquibase.properties](https://docs.liquibase.com/community/user-guide-5-0/what-is-the-liquibase-properties-file) file can be used for basic testing. However, it is **strongly** recommended that [environment variables](https://docs.liquibase.com/secure/user-guide-5-0/what-are-liquibase-environment-variables) or a [secrets manager extension](https://docs.liquibase.com/secure/user-guide-5-0/what-are-liquibase-secrets-management-extensions) be used for any scenario beyond that.
 
 In general, Liquibase needs three pieces of information to connect to a database.
 
-1. [JDBC URL](https://docs.liquibase.com/workflows/liquibase-community/using-jdbc-url-in-liquibase.html): database connection string
+1. [JDBC URL](https://docs.liquibase.com/community/integration-guide-5-0): database connection string
 1. Username: typically a service account
 1. Password: typically stored within a vault
 
-The exact information required may vary between individual database platforms. Consult [the database documentation](https://docs.liquibase.com/start/tutorials/home.html) for specific details.
+The exact information required may vary between individual database platforms. Consult [the database documentation](https://docs.liquibase.com/secure/integration-guide-5-0/what-databases-are-supported-by-liquibase) for specific details.
 
 # ❓ Helpful Commands
 |Command |Description|Documentation
 |----------|------------|------------|
-| connect | Test database connection | [Link](https://docs.liquibase.com/commands/change-tracking/connect.html)
-| flow | Execute a Liquibase workflow | [Link](https://docs.liquibase.com/commands/flow/flow.html)
-| status | Show undeployed changes | [Link](https://docs.liquibase.com/commands/change-tracking/status.html)
-| update | Run changes against target database | [Link](https://docs.liquibase.com/change-types/update.html)
-| history | Show deployed changes | [Link](https://docs.liquibase.com/commands/change-tracking/history.html)
-| rollback-one-update | Rollback the last or a specified update | [Link](https://docs.liquibase.com/commands/rollback/rollback-one-update.html)
-| checks | Show or view policy checks | [Link](https://docs.liquibase.com/liquibase-pro/policy-checks/workflows/home.html)
+| connect | Test database connection | [Link](https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/connect)
+| flow | Execute a Liquibase workflow | [Link](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-flow-file)
+| status | Show undeployed changes | [Link](https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/status)
+| update | Run changes against target database | [Link](https://docs.liquibase.com/reference-guide/init-update-and-rollback-commands/update)
+| history | Show deployed changes | [Link](https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/history)
+| rollback-one-update | Rollback the last or a specified update | [Link](https://docs.liquibase.com/reference-guide/init-update-and-rollback-commands/rollback-one-update-sql)
+| checks | Show or view policy checks | [Link](https://docs.liquibase.com/secure/user-guide-5-0/what-are-policy-checks)
 
 # 🚀 Liquibase in Automation
-Liquibase Pro can work with any automation tool which supports invoking command-line tools. Liquibase provides working examples for some popular automation platforms.
+Liquibase Secure can work with any automation tool which supports invoking command-line tools. Liquibase provides working examples for some popular automation platforms.
 
-* [Ansible Tower](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Ansible_Tower/liquibase_playbook.yml
-)
+* [Ansible Tower](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Ansible_Tower/liquibase_playbook.yml)
 * [AWS CodeBuild](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/AWS_CodeBuild/buildspec.yml)
-* [Azure Dev Ops](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Azure_DevOps/azure_pipelines_docker.yml) (build)
-* [Bitbucket Pipelines](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Bitbucket/bitbucket-pipelines.yml)
+* [Azure DevOps](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Bitbucket/bitbucket-pipelines.yml)
+* [Bitbucket](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Bitbucket/bitbucket-pipelines.yml)
 * [CircleCI](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/CircleCI/config.yml)
 * [GitHub Actions](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/GitHub_Actions/liquibase_workflow.yml)
 * [GitLab](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/GitLab/gitlab-ci.yml)
-* [Jenkins](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Jenkins/Jenkinsfile)
+* [Jenkins](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Jenkins/Jenkinsfile) 
 
-# 🔩 Core Pro Features
+# 🔩 Core Secure Features
 During a typical evaluation the following features are exercised.
 
-1. [Policy Checks](https://docs.liquibase.com/liquibase-pro/policy-checks/home.html): similar to static code analysis, but geared more for database changes. Policy Checks can be customized by team, database, etc. Sample Regex and Python checks can be found [here](https://github.com/liquibase/custom_policychecks).
-1. [Workflows](https://docs.liquibase.com/commands/flow/flow.html): portable, database independent workflows to ensure consistency
-1. [Targeted Rollback](https://docs.liquibase.com/liquibase-pro/targeted-rollbacks.html): rollback individual changesets
-1. [Operation Reports](https://docs.liquibase.com/liquibase-pro/observability/operation-reports.html): basic HTML reports used for auditing or troubleshooting
-1. [Structured Logging](https://docs.liquibase.com/liquibase-pro/observability/structured-logging.html): JSON formatted logs to feed into an observability tool for reporting (e.g., Datadog, Splunk, Grafana)
+1. [Policy Checks](https://docs.liquibase.com/secure/user-guide-5-0/what-are-policy-checks): similar to static code analysis, but geared more for database changes. Policy Checks can be customized by team, database, etc. Sample Regex and Python checks can be found [here](https://github.com/liquibase/custom_policychecks).
+1. [Workflows]( https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-flow-file): portable, database independent workflows to ensure consistency
+1. [Targeted Rollback](https://docs.liquibase.com/secure/user-guide-5-0/what-are-targeted-rollbacks): rollback individual changesets
+1. [Operation Reports](https://docs.liquibase.com/secure/user-guide-5-0/what-are-operation-reports): HTML reports used for auditing or troubleshooting, created and hosted on your infrastructure
+1. [Structured Logging](https://docs.liquibase.com/secure/user-guide-5-0/what-is-structured-logging): JSON formatted logs to feed into an observability tool for reporting (e.g., Datadog, Splunk, Grafana)
 
 Sample flow files are included in this repository.
 
@@ -102,7 +100,7 @@ Sample flow files are included in this repository.
     * [liquibase.flowfile.cd.yaml](liquibase.flowfile.cd.yaml): flow for Continuous Delievery
 
 # 🔦 Troubleshooting
-* [Installation issues](https://docs.liquibase.com/start/install/liquibase-installation-troubleshooting.html)
+* [Installation issues](https://docs.liquibase.com/pro/get-started-5-0/installation-troubleshooting)
 * [Common issues](https://support.liquibase.com/hc/en-us/sections/27504481958555-Troubleshooting)
 * [Liquibase University](https://learn.liquibase.com/catalog/info/id:127)
 
@@ -110,4 +108,4 @@ Sample flow files are included in this repository.
 Liquibase sales: https://www.liquibase.com/contact-us<br>
 
 # ⭐ Thank you!
-Thank you for evaluating Liquibase Pro! We hope to be a part of your DevOps journey.
+Thank you for evaluating Liquibase Secure! We hope to be a part of your DevOps journey.
