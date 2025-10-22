@@ -81,14 +81,17 @@ Liquibase Secure can work with any automation tool which supports invoking comma
 * [GitLab](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/GitLab/gitlab-ci.yml)
 * [Jenkins](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Jenkins/Jenkinsfile) 
 
+# ⚙️ Liquibase Secure Developer
+Official [VS Code IDE Extension](https://docs.liquibase.com/secure/user-guide-5-0/install-and-configure-the-liquibase-secure-developer-vs-code-extension) for Liquibase Secure.
+
 # 🔩 Liquibase Secure Core Capabilities
 During a typical evaluation the following features are exercised.
 
 1. [Policy Checks](https://docs.liquibase.com/secure/user-guide-5-0/what-are-policy-checks): similar to static code analysis, but geared more for database changes. Policy Checks can be customized by team, database, etc. Sample Regex and Python checks can be found [here](https://github.com/liquibase/custom_policychecks).
 1. [Workflows](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-flow-file): portable, database independent workflows to ensure consistency
-1. [Liquibase Secure Developer](https://marketplace.visualstudio.com/items?itemName=Liquibase.secure-developer-vscode): official VS Code extension for Liquibase Secure
 1. [Operation Reports](https://docs.liquibase.com/secure/user-guide-5-0/what-are-operation-reports): HTML reports used for auditing or troubleshooting, created and hosted on your infrastructure
 1. [Structured Logging](https://docs.liquibase.com/secure/user-guide-5-0/what-is-structured-logging): JSON formatted logs to feed into an observability tool for reporting (e.g., Datadog, Splunk, Grafana)
+1. [DATABASECHANGELOGHISTORY table](https://docs.liquibase.com/secure/user-guide-5-0/what-is-the-database-changelog-history-table): records a history of all changes Liquibase Secure makes to a database
 1. [Targeted Rollback](https://docs.liquibase.com/secure/user-guide-5-0/what-are-targeted-rollbacks): rollback individual changesets
 
 Sample flow files are included in this repository.
