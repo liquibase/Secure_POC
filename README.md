@@ -81,6 +81,8 @@ Liquibase Secure can work with any automation tool which supports invoking comma
 * [GitLab](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/GitLab/gitlab-ci.yml)
 * [Jenkins](https://github.com/liquibase/liquibase-toolbox/blob/master/build_scripts_examples/Jenkins/Jenkinsfile) 
 
+**Note!** If you are using GitHub Actions, Liquibase publishes actions to make setup and exuection simple. You can find documentation [here](https://github.com/marketplace/actions/setup-liquibase).
+
 # ⚙️ Liquibase Secure Developer
 Official [VS Code IDE Extension](https://docs.liquibase.com/secure/user-guide-5-0/install-and-configure-the-liquibase-secure-developer-vs-code-extension) for Liquibase Secure.
 
