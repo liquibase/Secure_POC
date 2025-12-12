@@ -84,7 +84,7 @@ Liquibase Secure can work with any automation tool which supports invoking comma
 **Note!** If you are using GitHub Actions, Liquibase publishes actions to make setup and exuection simple. You can find documentation [here](https://github.com/marketplace/actions/setup-liquibase).
 
 # ⚙️ Liquibase Secure Developer
-Official [VS Code IDE Extension](https://docs.liquibase.com/secure/user-guide-5-0/install-and-configure-the-liquibase-secure-developer-vs-code-extension) for Liquibase Secure.
+Official [VS Code IDE Extension](https://docs.liquibase.com/secure-developer/user-guide-1-0/install-and-configure-the-liquibase-secure-developer-vs-code-extension) for Liquibase Secure.
 
 # 🔩 Liquibase Secure Core Capabilities
 During a typical evaluation the following features are exercised.
