@@ -125,4 +125,4 @@ stages:
       - type: liquibase
         if: "${LB_TEST_CHECKS} == T"
         command: checks run
-        cmdArgs: { report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${CHECKS_REPORT}", checks-scope: "changelog, database", changeset-filter: "pending", auto-update: "on" }
+        cmdArgs: { label-filter: "${LB_LABELS}", report-enabled: "true", report-path: "${LB_BASE_DIR}", report-name: "${CHECKS_REPORT}", checks-scope: "changelog, database", changeset-filter: "pending", auto-update: "on" }
