@@ -62,7 +62,7 @@ The exact information required may vary between individual database platforms. C
 |Command |Description|Documentation
 |----------|------------|------------|
 | connect | Test database connection | [Link](https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/connect)
-| flow | Execute a Liquibase workflow | [Link](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-flow-file)
+| flow | Execute a Liquibase workflow (samples are listed below) | [Link](https://docs.liquibase.com/secure/user-guide-5-0/what-is-a-flow-file)
 | status | Show undeployed changes | [Link](https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/status)
 | update | Run changes against target database | [Link](https://docs.liquibase.com/reference-guide/init-update-and-rollback-commands/update)
 | history | Show deployed changes | [Link](https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/history)
@@ -96,7 +96,7 @@ During a typical evaluation the following features are exercised.
 1. [DATABASECHANGELOGHISTORY table](https://docs.liquibase.com/secure/user-guide-5-0/what-is-the-database-changelog-history-table): records a history of all changes Liquibase Secure makes to a database
 1. [Targeted Rollback](https://docs.liquibase.com/secure/user-guide-5-0/what-are-targeted-rollbacks): rollback individual changesets
 
-Sample flow files are included in this repository.
+## Sample flow files included in this repository
 
 * Basic
     * [liquibase.flowfile.basic](liquibase.flowfile.basic.yaml): basic flow
