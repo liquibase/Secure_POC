@@ -87,3 +87,4 @@ stages:
       #
       - type: liquibase
         command: validate
+        cmdArgs: { strict: "true" }

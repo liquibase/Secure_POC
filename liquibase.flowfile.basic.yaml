@@ -112,6 +112,7 @@ stages:
       #
       - type: liquibase
         command: validate
+        cmdArgs: { strict: "true" }
       #
       # View pending changes
       # https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/status
