@@ -1,3 +1,4 @@
+.liquibase
 Commands.txt
 liquibase.checks-settings.conf.backup*
 liquibase.properties
