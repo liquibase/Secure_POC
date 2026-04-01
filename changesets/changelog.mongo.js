@@ -1,6 +1,9 @@
 // liquibase formatted mongodb
 
-// changeset jbennett:create_collection_organizations labels:release-1.0.0 runWith:mongosh
+/*
+    ********** Release 1.0.0 **********
+*/
+// changeset jbennett:create_collection_organizations labels:release-1.0.0
 db.createCollection('Organizations', {
     validator: {
         $jsonSchema: {
@@ -12,7 +15,7 @@ db.createCollection('Organizations', {
 });
 // rollback db.Organizations.drop()
 
-// changeset jbennett:insertmany_organizations labels:release-1.0.0 runWith:mongosh
+// changeset jbennett:insert_many_organizations labels:release-1.0.0
 db.Organizations.insertMany(
     [
         { _id: 1, name: "Acme Corporation", industry: "Explosives" },
@@ -24,11 +27,25 @@ db.Organizations.insertMany(
 );
 // rollback db.Organizations.deleteMany({})
 
-// changeset jbennett:create_collection_addresses labels:release-1.1.0 runWith:mongosh
+/*
+    ********** Release 1.1.0 **********
+*/
+
+// db.createCollection('Addresses', {
+//     validator: {
+//         $jsonSchema: {
+//             bsonType: "object",
+//             title: "Addresses Validation",
+//             required: [ "_id", "address", "city", "state", "zip" ]
+//         }
+//     }
+// });
+
+// changeset dzentgraf:create_collection_addresses labels:release-1.1.0
 db.createCollection('Addresses');
 // rollback db.Addresses.drop()
 
-// changeset jbennett:insertmany_addresses labels:release-1.1.0 runWith:mongosh
+// changeset dzentgraf:insert_many_addresses labels:release-1.1.0
 db.Addresses.insertMany(
     [
         { _id: 1, address: "7 Walt Whitman Street", city: "Gaithersburg", state: "MD", zip: "20877" },
@@ -39,3 +56,33 @@ db.Addresses.insertMany(
     ]
 );
 // rollback db.Addresses.deleteMany({})
+
+/*
+    ********** Release 1.2.0 **********
+*/
+// changeset molivas:add_constraint_organizations labels:release-1.2.0
+// Data fix: make sure all existing industries are valid
+// db.Organizations.updateMany(
+//     { industry: { $nin: ["Explosives", "Y2K", "Zombies", "People", "Widgets"] } },
+//     { $set: { industry: "Unknown" } }
+// );
+// Now enforce constraint (safe - data is clean)
+db.runCommand({
+    collMod: "Organizations",
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["_id", "name", "industry"],
+            properties: {
+                _id: { bsonType: "int" },
+                name: { bsonType: "string" },
+                industry: { 
+                    bsonType: "string",
+                    enum: ["Explosives", "Y2K", "Zombies", "People", "Widgets", "Unknown"]
+                }
+            }
+        }
+    },
+    validationLevel: "strict"  // Enforce on ALL updates - data is clean
+});
+// rollback db.runCommand({collMod: "Organizations", validator: {/* no constraint */}})
