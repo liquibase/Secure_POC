@@ -1,9 +1,7 @@
 // liquibase formatted mongodb
 
-/*
-    ********** Release 1.0.0 **********
-*/
 // changeset jbennett:create_collection_organizations labels:release-1.0.0
+// comment Release 1.0.0
 db.createCollection('Organizations', {
     validator: {
         $jsonSchema: {
@@ -16,6 +14,7 @@ db.createCollection('Organizations', {
 // rollback db.Organizations.drop()
 
 // changeset jbennett:insert_many_organizations labels:release-1.0.0
+// comment Release 1.0.0
 db.Organizations.insertMany(
     [
         { _id: 1, name: "Acme Corporation", industry: "Explosives" },
@@ -26,10 +25,6 @@ db.Organizations.insertMany(
     ]
 );
 // rollback db.Organizations.deleteMany({})
-
-/*
-    ********** Release 1.1.0 **********
-*/
 
 // db.createCollection('Addresses', {
 //     validator: {
@@ -42,10 +37,12 @@ db.Organizations.insertMany(
 // });
 
 // changeset dzentgraf:create_collection_addresses labels:release-1.1.0
+// comment Release 1.1.0
 db.createCollection('Addresses');
 // rollback db.Addresses.drop()
 
 // changeset dzentgraf:insert_many_addresses labels:release-1.1.0
+// comment Release 1.1.0
 db.Addresses.insertMany(
     [
         { _id: 1, address: "7 Walt Whitman Street", city: "Gaithersburg", state: "MD", zip: "20877" },
@@ -57,10 +54,8 @@ db.Addresses.insertMany(
 );
 // rollback db.Addresses.deleteMany({})
 
-/*
-    ********** Release 1.2.0 **********
-*/
 // changeset molivas:add_constraint_organizations labels:release-1.2.0
+// comment Release 1.2.0
 // Data fix: make sure all existing industries are valid
 // db.Organizations.updateMany(
 //     { industry: { $nin: ["Explosives", "Y2K", "Zombies", "People", "Widgets"] } },

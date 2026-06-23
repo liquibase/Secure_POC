@@ -1,9 +1,7 @@
 --liquibase formatted sql
 
-/*
-    ********** Release 1.0.0 **********
-*/
 --changeset jbennett:ddl_create_table_organizations labels:release-1.0.0
+--comment Release 1.0.0
 CREATE TABLE ORGANIZATIONS (
     ID INT PRIMARY KEY NOT NULL,
     NAME VARCHAR(200),
@@ -13,6 +11,7 @@ CREATE TABLE ORGANIZATIONS (
 --rollback DROP TABLE ORGANIZATIONS;
 
 --changeset jbennett:dml_insert_organizations labels:release-1.0.0
+--comment Release 1.0.0
 INSERT INTO ORGANIZATIONS (ID, NAME, INDUSTRY, EMPLOYEE_COUNT) VALUES (1, 'Acme Corporation', 'Explosives', 1);
 INSERT INTO ORGANIZATIONS (ID, NAME, INDUSTRY, EMPLOYEE_COUNT) VALUES (2, 'Initech', 'Y2K', 50);
 INSERT INTO ORGANIZATIONS (ID, NAME, INDUSTRY, EMPLOYEE_COUNT) VALUES (3, 'Umbrella Corporation', 'Zombies', 10000);
@@ -20,10 +19,8 @@ INSERT INTO ORGANIZATIONS (ID, NAME, INDUSTRY, EMPLOYEE_COUNT) VALUES (4, 'Soyle
 INSERT INTO ORGANIZATIONS (ID, NAME, INDUSTRY, EMPLOYEE_COUNT) VALUES (5, 'Globex Corp', 'Widgets', 5000);
 --rollback DELETE FROM ORGANIZATIONS WHERE ID BETWEEN 1 AND 5;
 
-/*
-    ********** Release 1.0.1 **********
-*/
 --changeset dzentgraf:ddl_create_table_addresses labels:release-1.0.1
+--comment Release 1.0.1
 CREATE TABLE ADDRESSES (
     ID INT PRIMARY KEY NOT NULL,
     ADDRESS_LINE_1 VARCHAR(500),
@@ -35,6 +32,7 @@ CREATE TABLE ADDRESSES (
 --rollback DROP TABLE ADDRESSES;
 
 --changeset dzentgraf:ddl_create_fk_addresses labels:release-1.0.1
+--comment Release 1.0.1
 ALTER TABLE ADDRESSES
     ADD CONSTRAINT ORG_FK1
     FOREIGN KEY (ORG_ID)
@@ -42,6 +40,7 @@ ALTER TABLE ADDRESSES
 --rollback ALTER TABLE ADDRESSES DROP CONSTRAINT ORG_FK1;
 
 --changeset dzentgraf:ddl_create_table_employees labels:release-1.0.1
+--comment Release 1.0.1
 CREATE TABLE EMPLOYEES (
     ID INT PRIMARY KEY NOT NULL,
     FIRST_NAME VARCHAR(200),
@@ -53,6 +52,7 @@ CREATE TABLE EMPLOYEES (
 --rollback DROP TABLE EMPLOYEES;
 
 --changeset dzentgraf:dml_insert_employees labels:release-1.0.1
+--comment Release 1.0.1
 INSERT INTO EMPLOYEES (ID, FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, EMAIL_ADDRESS, ORG_ID) VALUES (1, 'Taylor', 'Morgan', DATE('1988-04-15'), 'redacted@example.com', 1);
 INSERT INTO EMPLOYEES (ID, FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, EMAIL_ADDRESS, ORG_ID) VALUES (2, 'Jordan', 'Lee', DATE('1992-09-03'), 'redacted@example.com', 2);
 INSERT INTO EMPLOYEES (ID, FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, EMAIL_ADDRESS, ORG_ID) VALUES (3, 'Casey', 'Nguyen', DATE('1985-12-22'), 'redacted@example.com', 3);
@@ -60,10 +60,8 @@ INSERT INTO EMPLOYEES (ID, FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, EMAIL_ADDRESS, 
 INSERT INTO EMPLOYEES (ID, FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, EMAIL_ADDRESS, ORG_ID) VALUES (5, 'Avery', 'Chen', DATE('1995-02-27'), 'redacted@example.com', 5);
 --rollback DELETE FROM EMPLOYEES WHERE ID BETWEEN 1 AND 5;
 
-/*
-    ********** Release 1.0.2 **********
-*/
 --changeset molivas:ddl_create_fk_employees labels:release-1.0.2
+--comment Release 1.0.2
 ALTER TABLE EMPLOYEES
     ADD CONSTRAINT ORG_FK2
     FOREIGN KEY (ORG_ID)
@@ -75,6 +73,7 @@ DELETE FROM ORGANIZATIONS;
 --rollback empty
 
 --changeset molivas:sp_create_getemployeesbyorg labels:release-1.0.2 --splitStatements:false --runOnChange:true
+--comment Release 1.0.2
 CREATE OR REPLACE FUNCTION get_employees_by_org(p_org_id integer)
 RETURNS TABLE (
     ID integer,
@@ -91,13 +90,12 @@ END;
 $$ LANGUAGE plpgsql;
 --rollback DROP FUNCTION IF EXISTS get_employees_by_org(integer);
 
-/*
-    ********** Release 1.0.3 **********
-*/
 --changeset jbennett:dml_email_fix labels:jira-1388,release-1.0.3
+--comment Release 1.0.3
 UPDATE EMPLOYEES SET EMAIL_ADDRESS = 'taylor.morgan2@example.com' WHERE ID = 1;
 --rollback UPDATE EMPLOYEES SET EMAIL_ADDRESS = 'redacted@example.com' WHERE ID = 1;
 
 --changeset mikeo:dcl_grant_employee_guest labels:jira-1412,release-1.0.3
+--changeset jbennett:dml_email_fix labels:jira-1388,release-1.0.3
 GRANT SELECT ON EMPLOYEES TO guest;
 --rollback REVOKE SELECT ON EMPLOYEES FROM guest;
